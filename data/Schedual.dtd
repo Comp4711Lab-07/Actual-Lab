@@ -5,14 +5,24 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<!ELEMENT Schedule (Day*)>
+<!ELEMENT Schedule (Day*, Time*, CourseNum*)>
 
-<!ELEMENT Course (courseNum, Instructor, Room, Hour)>
+<!ELEMENT Course (courseNum?, Instructor, Room, Hour?, day?)>
+
 <!ELEMENT courseNum (#PCDATA)>
+<!ELEMENT day (#PCDATA)>
 
 <!ELEMENT Day (Course+)>
 <!ATTLIST Day
     type (Monday|Tuesday|Wednesday|Thursday|Friday) "Monday">
+
+<!ELEMENT Time (Course+)>
+<!ATTLIST Time
+    type (8:30am|9:30am|10:30am|11:30am|12:30pm|1:30pm|2:30pm|3:30pm|4:30pm) "8:30am">
+
+<!ELEMENT CourseNum (Course+)>
+<!ATTLIST CourseNum
+    type (4995|4932|4711|4735|4560|3600) "4711">
 
 <!ELEMENT Hour (#PCDATA)>
 
