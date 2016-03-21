@@ -26,8 +26,24 @@ class Welcome extends CI_Controller {
                 $this->parser->parse('Welcome', $this->data);
 	}
         
-        public function search()
+        public function __construct() {
+            parent::__construct();
+            $this->load->model('timetable');
+        }
+        
+        public function search($day, $time)
         {
+            $result = $this->timetable->getDay($day);
             
+            if(result == null) {
+                return null;
+            } else {
+                foreach($result->course as $course) {
+                    if($course->time == $time) {
+                        return $course;
+                    }
+                }  
+            }  
+            return null;
         }
 }
