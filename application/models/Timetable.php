@@ -30,7 +30,7 @@ class Timetable extends CI_Model {
             $this->dayXml = simplexml_load_file(DATAPATH . 'Data1.xml');
             foreach($this->dayXml->Day as $day) {
                 foreach($day->Course as $course) {
-                    $tmp = new InfoClass();
+                    $tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
@@ -45,7 +45,7 @@ class Timetable extends CI_Model {
             $this->courseXml = simplexml_load_file(DATAPATH, '.xml');
             foreach($this->courseXml->CourseNum as $courseNum) {
                 foreach($courseNum->course as $course) {
-                    $tmp = new InfoClass();
+                    $tmp = new stdClass();
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
                     $tmp->time = (string)$course->Hour;
@@ -60,7 +60,7 @@ class Timetable extends CI_Model {
             $this->timeXml = simplexml_load_file(DATAPATH, '.xml');
             foreach($this->timeXml->Hour as $time) {
                 foreach($time->course as $course) {
-                    $tmp = new InfoClass();
+                    $tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
