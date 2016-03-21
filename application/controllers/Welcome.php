@@ -20,7 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+                $this->data['TableContent'] = "this";
+                $this->data['title'] = "TimeTable";
+                $this->data['data'] = $this->data;
+                $this->parser->parse('Welcome', $this->data);
 	}
         
         public function search()
