@@ -27,8 +27,10 @@ class Timetable extends CI_Model {
             parent::__construct();
             
             // by day
-            $this->dayXml = simplexml_load_file(DATAPATH . 'Data1.xml');
+            $this->dayXml = simplexml_load_file(DATAPATH . 'Day.xml');
+            
             foreach($this->dayXml->Day as $day) {
+                $tmpDay = array();
                 foreach($day->Course as $course) {
                     $tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
@@ -36,14 +38,16 @@ class Timetable extends CI_Model {
                     $tmp->room = (string)$course->Room;
                     $tmp->time = (string)$course->Hour;
                     
-                    $tmpDay[] = array($tmp);
+                    $tmpDay[] = $tmp;
                 }
-                $this->days[(string)$day['Day']][] = $tmpDay;
+                $this->days[(string)$day['type']] = $tmpDay;
             }
             
             // by course
-            $this->courseXml = simplexml_load_file(DATAPATH, '.xml');
+            $this->courseXml = simplexml_load_file(DATAPATH . 'Course.xml');
+            
             foreach($this->courseXml->CourseNum as $courseNum) {
+                $tmpCourse = array();
                 foreach($courseNum->course as $course) {
                     $tmp = new stdClass();
                     $tmp->instructor = (string)$course->Instructor;
@@ -51,14 +55,16 @@ class Timetable extends CI_Model {
                     $tmp->time = (string)$course->Hour;
                     $tmp->day = (string)$course->day;
                     
-                    $tmpCourse[] = array($tmp);
+                    $tmpCourse[] = $tmp;
                 }
-                $this->courses[(string)$courseNum['CourseNum']][] = $tmpCourse;
+                $this->courses[(string)$courseNum['type']][] = $tmpCourse;
             }
             
             // by time
-            $this->timeXml = simplexml_load_file(DATAPATH, '.xml');
+            $this->timeXml = simplexml_load_file(DATAPATH . 'Time.xml');
+            
             foreach($this->timeXml->Hour as $time) {
+                $tmpHour = array();
                 foreach($time->course as $course) {
                     $tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
@@ -66,9 +72,9 @@ class Timetable extends CI_Model {
                     $tmp->room = (string)$course->Room;
                     $tmp->day = (string)$course->day;
                     
-                    $tmpHour[] = array($tmp);
+                    $tmpHour[] = $tmp;
                 }
-                $this->times[(string)$time['Time']][] = $tmpHour;
+                $this->times[(string)$time['type']][] = $tmpHour;
             }
             
     }

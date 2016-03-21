@@ -20,7 +20,16 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+                //$something =  $this->timetable->getDay('Tuesday');
+                //foreach($something as $course) {
+                    //$this->data['TableContent'] = $course->courseNum;
+                //}
+            
+                //$this->data['TableContent'] = $this->search('Tuesday', '3:30pm');
+                
+                $this->data['title'] = "TimeTable";
+                $this->data['data'] = $this->data;
+                $this->parser->parse('Welcome', $this->data);
 	}
         
         public function __construct() {
@@ -32,12 +41,12 @@ class Welcome extends CI_Controller {
         {
             $result = $this->timetable->getDay($day);
             
-            if(result == null) {
+            if($result == null) {
                 return null;
             } else {
-                foreach($result->course as $course) {
+                foreach($result as $course) {
                     if($course->time == $time) {
-                        return $course;
+                        return $course->courseNum;
                     }
                 }  
             }  
