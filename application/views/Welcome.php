@@ -11,7 +11,10 @@
     <body>
             <div id="content">
                 <div id="Name">
-                    {TableContent}
+                    <Table border='1'>
+                        {TableContent}
+                    </Table>
+                    
                 </div>
             </div>
             <div id="footer" class="span12">

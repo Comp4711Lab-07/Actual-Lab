@@ -20,12 +20,17 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-                //$something =  $this->timetable->getDay('Tuesday');
-                //foreach($something as $course) {
-                    //$this->data['TableContent'] = $course->courseNum;
-                //}
+                $string = '<tr><th>Course</th><th>Instructor</th><th>Room</th><th>Hour</th></tr>';
+                $array = $this->timetable->getDay('Tuesday');
+                foreach($array as $info) {
+                    $string .= '<tr><td>' . $info->courseNum . '<td>'
+                            . $info->instructor . '</td>'
+                            . '<td>' . $info->room . '</td>'
+                            . '<td>' . $info->time . '</td>'
+                            . '</td></tr>';
+                }
             
-                //$this->data['TableContent'] = $this->search('Tuesday', '3:30pm');
+                $this->data['TableContent'] = $string;
                 
                 $this->data['title'] = "TimeTable";
                 $this->data['data'] = $this->data;
