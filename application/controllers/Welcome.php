@@ -42,19 +42,33 @@ class Welcome extends CI_Controller {
             $this->load->model('timetable');
         }
         
-        public function search($day, $time)
-        {
-            $result = $this->timetable->getDay($day);
+        public function searchCourse($course) {
+            $result = $this->timetabel->getCourse($course);
             
-            if($result == null) {
+            if(result == null) {
                 return null;
-            } else {
-                foreach($result as $course) {
-                    if($course->time == $time) {
-                        return $course->courseNum;
-                    }
-                }  
-            }  
-            return null;
+            }
+            
+            return result;
+        }
+        
+        public function searchDay($day) {
+            $result = $this->timetabel->getDay($day);
+            
+            if(result == null) {
+                return null;
+            }
+            
+            return result;
+        }
+        
+        public function searchTime($time) {
+            $result = $this->timetabel->getHour($time);
+            
+            if(result == null) {
+                return null;
+            }
+            
+            return result;
         }
 }
