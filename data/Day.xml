@@ -102,7 +102,7 @@ and open the template in the editor.
             <Hour>8:30am</Hour>
         </Course>
         <Course>
-            <courseNum>3600</courseNum>
+            <courseNum>4560</courseNum>
             <Instructor>Brenda Fine</Instructor>
             <Room>1750</Room>
             <Hour>12:30pm</Hour>

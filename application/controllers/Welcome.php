@@ -120,38 +120,42 @@ class Welcome extends CI_Controller {
         }
         
         public function display_list() {
-            $list = $this->timetable->getDayArray();
-            $history = '';
-            $key = array_keys($list);
-            foreach ($key as $item) {
-                $history .= '<li><a href="Welcome/about/' . $item . '"> ' . $item . ' </a></li>';
+            $list1 = $this->timetable->getDayArray();
+            $history1 = '';
+            $key1 = array_keys($list1);
+            foreach ($key1 as $item) {
+                $history1 .= '<li><a href="Welcome/about/0/' . $item . '"> ' . $item . ' </a></li>';
             }
             
-            $this->data['Daydroplist'] = $history;
+            $this->data['Daydroplist'] = $history1;
             
-            $list = $this->timetable->getTimeArray();
-            $history = '';
-            $key = array_keys($list);
-            foreach ($key as $item) {
-                $history .= '<li><a href="Welcome/about/' . $item . ' "> ' . $item . ' </a></li>';
+            $list2 = $this->timetable->getTimeArray();
+            $history2 = '';
+            $key2 = array_keys($list2);
+            foreach ($key2 as $item) {
+                $history2 .= '<li><a href="Welcome/about/1/' . $item . ' "> ' . $item . ' </a></li>';
             }
             
-            $this->data['Timedroplist'] = $history;
+            $this->data['Timedroplist'] = $history2;
             
-            $list = $this->timetable->getCourseArray();
-            $history = '';
-            $key = array_keys($list);
-            foreach ($key as $item) {
-                $history .= '<li><a href="Welcome/about/' . $item . '"> ' . $item . ' </a></li>';
+            $list3 = $this->timetable->getCourseArray();
+            $history3 = '';
+            $key3 = array_keys($list3);
+            foreach ($key3 as $item) {
+                $history3 .= '<li><a href="Welcome/about/2/' . $item . '"> ' . $item . ' </a></li>';
             }
-            
-            $this->data['Coursedroplist'] = $history;
-            
+            $this->data['Coursedroplist'] = $history3;
         }
         
-        public function about() {
-            if (($something = $this->input->post("Days")) != '') {
-                print_r($something);
+        public function about($num = '0', $item = '') {
+            if ($item != '') {
+                if ($num == 0) {
+                    $this->buildDayTable($item);
+                } else if ($num == 1) {
+                    $this->buildTimeTable($item);
+                } else if ($num == 2) {
+                    $this->buildCourseTable($item);
+                }
             }
         }
 }
