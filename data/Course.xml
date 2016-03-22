@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE Schedule SYSTEM 'Schedual.dtd'>
+
+<Schedule>
+    <CourseNum type="4995">
+        <Course>
+            <Instructor>Dennis Richards</Instructor>
+            <Room>308</Room>
+            <Hour>2:30pm</Hour>
+            <day>Monday</day>
+        </Course>
+        <Course>
+            <Instructor>Dennis Richards</Instructor>
+            <Room>308</Room>
+            <Hour>10:30am</Hour>
+            <day>Wednesday</day>
+        </Course>
+    </CourseNum>
+    <CourseNum type="4932">
+        <Course>
+            <Instructor>Dennis Richards</Instructor>
+            <Room>308</Room>
+            <Hour>8:30am</Hour>
+            <day>Monday</day>
+        </Course>
+        <Course>
+            <Instructor>Dennis Richards</Instructor>
+            <Room>308</Room>
+            <Hour>3:30pm</Hour>
+            <day>Tuesday</day>
+        </Course>
+    </CourseNum>
+    <CourseNum type="4711">
+        <Course>
+            <Instructor>James Parry</Instructor>
+            <Room>1840</Room>
+            <Hour>2:30pm</Hour>
+            <day>Tuesday</day>
+        </Course>
+        <Course>
+            <Instructor>James Parry</Instructor>
+            <Room>320</Room>
+            <Hour>3:30pm</Hour>
+            <day>Thursday</day>
+        </Course>
+    </CourseNum>
+    <CourseNum type="4735">
+        <Course>
+            <Instructor>Mirela Gutica</Instructor>
+            <Room>1205</Room>
+            <Hour>11:30am</Hour>
+            <day>Monday</day>
+        </Course>
+        <Course>
+            <Instructor>Mathew Linder</Instructor>
+            <Room>308</Room>
+            <Hour>8:30am</Hour>
+            <day>Wednesday</day>
+        </Course>
+        <Course>
+            <Instructor>Mirela Gutica</Instructor>
+            <Room>1205</Room>
+            <Hour>1:30pm</Hour>
+            <day>Wednesday</day>
+        </Course>
+        <Course>
+            <Instructor>Mirela Gutica</Instructor>
+            <Room>1710</Room>
+            <Hour>11:30am</Hour>
+            <day>Thursday</day>
+        </Course>
+    </CourseNum>
+    <CourseNum type="4560">
+        <Course>
+            <Instructor>Brenda Fine</Instructor>
+            <Room>320</Room>
+            <Hour>9:30am</Hour>
+            <day>Tuesday</day>
+        </Course>
+        <Course>
+            <Instructor>Brenda Fine</Instructor>
+            <Room>1850</Room>
+            <Hour>11:30am</Hour>
+            <day>Tuesday</day>
+        </Course>
+        <Course>
+            <Instructor>Brenda Fine</Instructor>
+            <Room>1750</Room>
+            <Hour>12:30pm</Hour>
+            <day>Friday</day>
+        </Course>
+    </CourseNum>
+    <CourseNum type="3600">
+        <Course>
+            <Instructor>Catherine Ryan</Instructor>
+            <Room>4125</Room>
+            <Hour>1:30pm</Hour>
+            <day>Thursday</day>
+        </Course>
+        <Course>
+            <Instructor>Catherine Ryan</Instructor>
+            <Room>1840</Room>
+            <Hour>8:30am</Hour>
+            <day>Friday</day>
+        </Course>
+    </CourseNum>
+</Schedule>
