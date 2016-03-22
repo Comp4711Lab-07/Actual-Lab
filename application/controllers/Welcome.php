@@ -57,4 +57,12 @@ class Welcome extends CI_Controller {
             }  
             return null;
         }
+        
+        public function about() {
+            if (($something = $this->input->post("Days")) != '') {
+                print_r($something);
+            }
+            //$view_data['search'] = $search;
+            //$this->load->view("about", $view_data);
+        }
 }
