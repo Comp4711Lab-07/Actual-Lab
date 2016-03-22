@@ -10,11 +10,35 @@
     </head>
     <body>
             <div id="content">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Days..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Daydroplist}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Times..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Timedroplist}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Courses..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Coursedroplist}
+                    </ul>
+                </div>
+                <br></br>
                 <div id="Name">
                     <Table border='1'>
                         {TableContent}
                     </Table>
-                    
                 </div>
             </div>
             <div id="footer" class="span12">

@@ -23,6 +23,7 @@ class Welcome extends CI_Controller {
             $this->buildDayTable('Monday'); //works!
             //$this->buildCourseTable('4995'); // works!
             //$this->buildTimeTable('8:30am');    
+            
 	}
         
         protected function buildDayTable($day) {
@@ -85,10 +86,11 @@ class Welcome extends CI_Controller {
         public function __construct() {
             parent::__construct();
             $this->load->model('timetable');
+            $this->display_list();
         }
         
         public function searchCourse($course) {
-            $result = $this->timetabel->getCourse($course);
+            $result = $this->timetable->getCourse($course);
             
             if(result == null) {
                 return null;
@@ -98,7 +100,7 @@ class Welcome extends CI_Controller {
         }
         
         public function searchDay($day) {
-            $result = $this->timetabel->getDay($day);
+            $result = $this->timetable->getDay($day);
             
             if(result == null) {
                 return null;
@@ -108,12 +110,48 @@ class Welcome extends CI_Controller {
         }
         
         public function searchTime($time) {
-            $result = $this->timetabel->getHour($time);
+            $result = $this->timetable->getHour($time);
             
             if(result == null) {
                 return null;
             }
             
             return result;
+        }
+        
+        public function display_list() {
+            $list = $this->timetable->getDayArray();
+            $history = '';
+            $key = array_keys($list);
+            foreach ($key as $item) {
+                $history .= '<li><a href="Welcome/about/' . $item . '"> ' . $item . ' </a></li>';
+            }
+            
+            $this->data['Daydroplist'] = $history;
+            
+            $list = $this->timetable->getTimeArray();
+            $history = '';
+            $key = array_keys($list);
+            foreach ($key as $item) {
+                $history .= '<li><a href="Welcome/about/' . $item . ' "> ' . $item . ' </a></li>';
+            }
+            
+            $this->data['Timedroplist'] = $history;
+            
+            $list = $this->timetable->getCourseArray();
+            $history = '';
+            $key = array_keys($list);
+            foreach ($key as $item) {
+                $history .= '<li><a href="Welcome/about/' . $item . '"> ' . $item . ' </a></li>';
+            }
+            
+            $this->data['Coursedroplist'] = $history;
+            
+        }
+        
+        public function about() {
+            if (($something = $this->input->post("Days")) != '') {
+                print_r($something);
+            }
         }
 }
