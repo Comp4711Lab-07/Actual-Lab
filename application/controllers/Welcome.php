@@ -20,8 +20,14 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-                $string = '<tr><th>Course</th><th>Instructor</th><th>Room</th><th>Hour</th></tr>';
-                $array = $this->timetable->getDay('Tuesday');
+            $this->buildDayTable('Monday'); //works!
+            //$this->buildCourseTable('4995'); // works!
+            //$this->buildTimeTable('8:30am');    
+	}
+        
+        protected function buildDayTable($day) {
+            $string = '<tr><th>Course</th><th>Instructor</th><th>Room</th><th>Hour</th></tr>';
+                $array = $this->timetable->getDay($day);
                 foreach($array as $info) {
                     $string .= '<tr><td>' . $info->courseNum . '<td>'
                             . $info->instructor . '</td>'
@@ -35,7 +41,46 @@ class Welcome extends CI_Controller {
                 $this->data['title'] = "TimeTable";
                 $this->data['data'] = $this->data;
                 $this->parser->parse('Welcome', $this->data);
-	}
+        }
+        
+        protected function buildCourseTable($course) {
+             $string = '<tr><th>Day</th><th>Instructor</th><th>Room</th><th>Hour</th></tr>';
+                $array = $this->timetable->getCourse($course);
+                foreach($array as $info) {
+                    $string .= '<tr><td>' . $info->day . '<td>'
+                            . $info->instructor . '</td>'
+                            . '<td>' . $info->room . '</td>'
+                            . '<td>' . $info->time . '</td>'
+                            . '</td></tr>';
+                    
+                }
+            
+                $this->data['TableContent'] = $string;
+                
+                $this->data['title'] = "TimeTable";
+                $this->data['data'] = $this->data;
+                $this->parser->parse('Welcome', $this->data);
+        }
+        
+        protected function buildTimeTable($hour) {
+             $string = '<tr><th>Course</th><th>Instructor</th><th>Room</th><th>Day</th></tr>';
+                $array = $this->timetable->getHour($hour);
+                //print_r($array);
+                foreach($array as $info) {
+                    $string .= '<tr><td>' . $info->courseNum . '<td>'
+                            . $info->instructor . '</td>'
+                            . '<td>' . $info->room . '</td>'
+                            . '<td>' . $info->day . '</td>'
+                            . '</td></tr>';
+                    
+                }
+            
+                $this->data['TableContent'] = $string;
+                
+                $this->data['title'] = "TimeTable";
+                $this->data['data'] = $this->data;
+                $this->parser->parse('Welcome', $this->data);
+        }
         
         public function __construct() {
             parent::__construct();
