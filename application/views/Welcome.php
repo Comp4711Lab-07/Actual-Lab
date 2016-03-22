@@ -1,53 +1,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>{title}</title>
+        <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="/assets/css/bootstrap.css" rel="stylesheet" media="screen"/>
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+        <script src ="/assets/js/bootstrap.js"></script>
     </head>
     <body>
             <div id="content">
-                Please select one:
-                <br></br>
-                <form method="post" id="form" action="Welcome/about">
-                    <select name="Courses">
-                        <option></option>
-                        <option value="4711">4711</option>
-                        <option value="4932">4932</option>
-                        <option value="4995">4995</option>
-                        <option value="4735">4735</option>
-                        <option value="4560">4560</option>
-                        <option value="3600">3600</option>
-                    </select>
-                    <select name="Times">
-                        <option></option>
-                        <option value="8:30am">8:30am</option>
-                        <option value="9:30am">9:30am</option>
-                        <option value="10:30am">10:30am</option>
-                        <option value="11:30am">11:30am</option>
-                        <option value="12:30pm">12:30pm</option>
-                        <option value="1:30pm">1:30pm</option>
-                        <option value="2:30pm">2:30pm</option>
-                        <option value="3:30pm">3:30pm</option>
-                    </select>
-                    <select name="Days">
-                        <option></option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                    </select>
-                </form>
-                <button type="submit" form="form">Select</button>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Days..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Daydroplist}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Times..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Timedroplist}
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Courses..
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {Coursedroplist}
+                    </ul>
+                </div>
                 <br></br>
                 <div id="Name">
                     <Table border='1'>
                         {TableContent}
                     </Table>
-                    
                 </div>
             </div>
             <div id="footer" class="span12">
                 Copyright &copy; 2015-2016,  John, Austin.
             </div>
+        <script src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
 
