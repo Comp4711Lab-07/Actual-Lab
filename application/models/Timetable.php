@@ -25,6 +25,7 @@ class Timetable extends CI_Model {
     public function __construct()
     {
             parent::__construct();
+            $this->load->model('booking');
             
             // by day
             $this->dayXml = simplexml_load_file(DATAPATH . 'Day.xml');
@@ -32,11 +33,16 @@ class Timetable extends CI_Model {
             foreach($this->dayXml->Day as $day) {
                 $tmpDay = array();
                 foreach($day->Course as $course) {
-                    $tmp = new stdClass();
+                    /*$tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
-                    $tmp->time = (string)$course->Hour;
+                    $tmp->time = (string)$course->Hour;*/
+                    
+                    $tmp = Booking::byDay((string)$course->courseNum,
+                            (string)$course->Instructor,
+                            (string)$course->Room,
+                            (string)$course->Hour);
                     
                     $tmpDay[] = $tmp;
                 }
@@ -49,11 +55,16 @@ class Timetable extends CI_Model {
             foreach($this->courseXml->CourseNum as $courseNum) {
                 $tmpCourse = array();
                 foreach($courseNum->course as $course) {
-                    $tmp = new stdClass();
+                    /*$tmp = new stdClass();
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
                     $tmp->time = (string)$course->Hour;
-                    $tmp->day = (string)$course->day;
+                    $tmp->day = (string)$course->day;*/
+                    
+                    $tmp = Booking::byCourse((string)$course->Instructor,
+                            (string)$course->Room,
+                            (string)$course->Hour,
+                            (string)$course->day);
                     
                     $tmpCourse[] = $tmp;
                 }
@@ -66,11 +77,16 @@ class Timetable extends CI_Model {
             foreach($this->timeXml->Hour as $time) {
                 $tmpHour = array();
                 foreach($time->course as $course) {
-                    $tmp = new stdClass();
+                   /* $tmp = new stdClass();
                     $tmp->courseNum = (string)$course->courseNum;
                     $tmp->instructor = (string)$course->Instructor;
                     $tmp->room = (string)$course->Room;
-                    $tmp->day = (string)$course->day;
+                    $tmp->day = (string)$course->day;*/
+                    
+                    $tmp = Booking::byHour((string)$course->courseNum,
+                            (string)$course->Instructor,
+                            (string)$course->Room, 
+                            (string)$course->day);
                     
                     $tmpHour[] = $tmp;
                 }
